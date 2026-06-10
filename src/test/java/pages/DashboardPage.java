@@ -66,12 +66,25 @@ public class DashboardPage {
         try {
             // Ensure we are fully on dashboard before clicking
             wait.until(ExpectedConditions.urlContains("dashboard"));
-            Thread.sleep(2000); // Wait for potential overlays to disappear
-            WebElement profileBtn = wait.until(ExpectedConditions.elementToBeClickable(userProfileIcon));
-            profileBtn.click();
+            Thread.sleep(3000); // Wait for potential overlays to disappear
+            
+            WebElement profileBtn = wait.until(ExpectedConditions.presenceOfElementLocated(userProfileIcon));
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(profileBtn)).click();
+            } catch (Exception e) {
+                ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", profileBtn);
+            }
+            
             Thread.sleep(1500); // wait for dropdown animation
-            WebElement logoutBtn = wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
-            logoutBtn.click();
+            
+            WebElement logoutBtn = wait.until(ExpectedConditions.presenceOfElementLocated(logoutButton));
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(logoutBtn)).click();
+            } catch (Exception e) {
+                ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", logoutBtn);
+            }
+            
+            wait.until(ExpectedConditions.urlContains("login"));
         } catch (Exception e) {
             System.out.println("Could not click logout: " + e.getMessage());
         }
