@@ -13,6 +13,9 @@
             <class name="tests.WasteTest"/>
             <class name="tests.ProfileTest"/>
             <class name="tests.ReportExportTest"/>
+            <class name="tests.LogoutTest"/>
+            <class name="tests.SecurityUITest"/>
+            <class name="tests.FileUploadTest"/>
         </classes>
     </test>
 
@@ -27,6 +30,9 @@
             <class name="tests.WasteTest"/>
             <class name="tests.ProfileTest"/>
             <class name="tests.ReportExportTest"/>
+            <class name="tests.LogoutTest"/>
+            <class name="tests.SecurityUITest"/>
+            <class name="tests.FileUploadTest"/>
         </classes>
     </test>
 
@@ -41,6 +47,9 @@
             <class name="tests.WasteTest"/>
             <class name="tests.ProfileTest"/>
             <class name="tests.ReportExportTest"/>
+            <class name="tests.LogoutTest"/>
+            <class name="tests.SecurityUITest"/>
+            <class name="tests.FileUploadTest"/>
         </classes>
     </test>
 
