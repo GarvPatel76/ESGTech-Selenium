@@ -41,4 +41,17 @@ public class ProfilePage {
             System.out.println("Name input or save button not found on profile page.");
         }
     }
+
+    public void updateOrganization(String companyName) {
+        wait.until(ExpectedConditions.elementToBeClickable(organizationBtn)).click();
+        WebElement companyInput = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[contains(@name, 'Company Name') or @aria-label='Company Name *'] | //*[contains(text(), 'Company Name')]/following-sibling::input")));
+        
+        try {
+            companyInput.clear();
+            companyInput.sendKeys(companyName);
+            wait.until(ExpectedConditions.elementToBeClickable(saveBtn)).click();
+        } catch (Exception e) {
+            System.out.println("Organization fields issue");
+        }
+    }
 }

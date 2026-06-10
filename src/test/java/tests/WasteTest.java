@@ -20,10 +20,13 @@ public class WasteTest extends BaseTest {
     private final String VALID_EMAIL = "garv.patel.growlity@gmail.com";
     private final String VALID_PASSWORD = "GnjA3UqKTN";
 
+    private WastePage wastePage;
+
     @BeforeMethod
     public void setupPage() {
         loginPage = new LoginPage(getDriver());
         gridPage = new GHGPage(getDriver());
+        wastePage = new WastePage(getDriver());
         loginPage.login(VALID_EMAIL, VALID_PASSWORD);
         
         // Navigate to Waste
@@ -33,14 +36,17 @@ public class WasteTest extends BaseTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(., 'Waste')]"))).click();
     }
 
-    @Test(priority = 1, description = "Test Delete Waste Record")
-    public void testDeleteWasteRecord() {
-        // Reuse grid interactions
-        gridPage.clickDeleteFirstRecord();
-        // Typically a confirmation modal appears here.
+    @Test(priority = 1, description = "Test Add Waste Record")
+    public void testAddWasteRecord() {
+        wastePage.fillWasteGenerated("234", "35123", "1235", "123545", "745", "325", "12345", "345");
     }
 
-    @Test(priority = 2, description = "Test Sort Waste Data")
+    @Test(priority = 2, description = "Test Delete Waste Record")
+    public void testDeleteWasteRecord() {
+        gridPage.clickDeleteFirstRecord();
+    }
+
+    @Test(priority = 3, description = "Test Sort Waste Data")
     public void testSortWasteData() {
         gridPage.clickSortOnDate();
     }

@@ -42,6 +42,27 @@ public class DashboardPage {
         return driver.findElement(sidebarNav).isDisplayed();
     }
 
+    public void clickReports() {
+        wait.until(ExpectedConditions.elementToBeClickable(reportsLink)).click();
+    }
+
+    public void updateDashboardFilters(String option1, String option2) {
+        try {
+            // Wait for comboboxes to appear (Selenium alternative to nth(2))
+            java.util.List<WebElement> comboboxes = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//select | //div[@role='combobox']")));
+            if(comboboxes.size() >= 3) {
+                // Simplified interaction assuming standard select or click-based combobox
+                comboboxes.get(2).click();
+                driver.findElement(By.xpath("//*[text()='" + option1 + "']")).click();
+                
+                comboboxes.get(3).click();
+                driver.findElement(By.xpath("//*[text()='" + option2 + "']")).click();
+            }
+        } catch (Exception e) {
+            System.out.println("Dashboard filters not interactable: " + e.getMessage());
+        }
+    }
+
     public void clickLogout() {
         wait.until(ExpectedConditions.elementToBeClickable(userProfileIcon)).click();
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();

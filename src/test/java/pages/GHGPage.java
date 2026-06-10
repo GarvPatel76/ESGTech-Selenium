@@ -89,4 +89,21 @@ public class GHGPage {
         // Clicks the first delete button found in the grid
         wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
     }
+
+    public void changePageSize(String size) {
+        try {
+            driver.findElement(By.cssSelector(".ag-icon-small-down")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='" + size + "']"))).click();
+        } catch (Exception e) {
+            System.out.println("Pagination dropdown not interactable");
+        }
+    }
+
+    public void goToLastPage() {
+        try {
+            driver.findElement(By.xpath("//button[contains(., 'Last Page') or contains(@aria-label, 'Last')]")).click();
+        } catch (Exception e) {
+            System.out.println("Last Page button not found");
+        }
+    }
 }

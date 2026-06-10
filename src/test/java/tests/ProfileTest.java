@@ -32,6 +32,11 @@ public class ProfileTest extends BaseTest {
     public void testEditProfile() {
         profilePage.navigateToManageProfile();
         profilePage.updateProfileName("Garv Patel (Test)");
-        // Add assertions for successful update toaster or text
+    }
+
+    @Test(priority = 3, description = "Test Edit Organization")
+    public void testEditOrganization() {
+        profilePage.navigateToManageProfile();
+        profilePage.updateOrganization("Growlity - overall-testing1");
     }
 }

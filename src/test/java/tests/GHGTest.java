@@ -66,4 +66,11 @@ public class GHGTest extends BaseTest {
         ghgPage.clickDeleteFirstRecord();
         // Typically a confirmation modal appears here.
     }
+
+    @Test(priority = 7, description = "Test Pagination")
+    public void testPagination() {
+        ghgPage.openMobileCombustion();
+        ghgPage.changePageSize("25");
+        ghgPage.goToLastPage();
+    }
 }
