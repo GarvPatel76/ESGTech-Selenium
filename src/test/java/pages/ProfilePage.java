@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ProfilePage {
-    private WebDriver driver;
     private WebDriverWait wait;
 
     // Locators from Codegen
@@ -22,7 +21,6 @@ public class ProfilePage {
     private By saveBtn = By.xpath("//button[contains(., 'Save') or contains(., 'Update')]");
 
     public ProfilePage(WebDriver driver) {
-        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

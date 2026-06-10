@@ -18,7 +18,6 @@ public class DashboardPage {
     private By sidebarNav = By.xpath("//nav[@aria-label='Main navigation' or .//a[contains(., 'Dashboard')]]");
     private By widgetContainer = By.cssSelector(".recharts-layer"); // from codegen chart interaction
     private By logoutButton = By.xpath("//*[contains(text(), 'Sign Out')]");
-    private By measureLink = By.xpath("//a[contains(., 'Measure')]");
     private By reportsLink = By.xpath("//a[contains(., 'Reports')]");
 
     public DashboardPage(WebDriver driver) {

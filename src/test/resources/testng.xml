@@ -11,15 +11,14 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.NavigationTest"/>
+            <class name="tests.FormTest"/>
+            <class name="tests.SearchTest"/>
             <class name="tests.DashboardTest"/>
-            <class name="tests.GHGTest"/>
-            <class name="tests.WaterTest"/>
-            <class name="tests.WasteTest"/>
-            <class name="tests.ProfileTest"/>
-            <class name="tests.ReportExportTest"/>
-            <class name="tests.LogoutTest"/>
             <class name="tests.SecurityUITest"/>
-            <class name="tests.FileUploadTest"/>
+            <class name="tests.UITest"/>
+            <class name="tests.PerformanceTest"/>
+            <class name="tests.LogoutTest"/>
         </classes>
     </test>
 
@@ -28,15 +27,14 @@
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.NavigationTest"/>
+            <class name="tests.FormTest"/>
+            <class name="tests.SearchTest"/>
             <class name="tests.DashboardTest"/>
-            <class name="tests.GHGTest"/>
-            <class name="tests.WaterTest"/>
-            <class name="tests.WasteTest"/>
-            <class name="tests.ProfileTest"/>
-            <class name="tests.ReportExportTest"/>
-            <class name="tests.LogoutTest"/>
             <class name="tests.SecurityUITest"/>
-            <class name="tests.FileUploadTest"/>
+            <class name="tests.UITest"/>
+            <class name="tests.PerformanceTest"/>
+            <class name="tests.LogoutTest"/>
         </classes>
     </test>
 
@@ -45,15 +43,14 @@
         <parameter name="browser" value="edge"/>
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.NavigationTest"/>
+            <class name="tests.FormTest"/>
+            <class name="tests.SearchTest"/>
             <class name="tests.DashboardTest"/>
-            <class name="tests.GHGTest"/>
-            <class name="tests.WaterTest"/>
-            <class name="tests.WasteTest"/>
-            <class name="tests.ProfileTest"/>
-            <class name="tests.ReportExportTest"/>
-            <class name="tests.LogoutTest"/>
             <class name="tests.SecurityUITest"/>
-            <class name="tests.FileUploadTest"/>
+            <class name="tests.UITest"/>
+            <class name="tests.PerformanceTest"/>
+            <class name="tests.LogoutTest"/>
         </classes>
     </test>
 
