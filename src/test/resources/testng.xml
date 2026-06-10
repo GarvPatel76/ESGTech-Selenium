@@ -3,7 +3,8 @@
 <suite name="ESG Tech Automation Suite">
     <test name="Basic App Launch Test">
         <classes>
-            <class name="tests.AppLaunchTest"/>
+            <class name="tests.LoginTest"/>
+            <class name="tests.DashboardTest"/>
         </classes>
     </test>
 </suite>
