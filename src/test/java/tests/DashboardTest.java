@@ -12,9 +12,8 @@ public class DashboardTest extends BaseTest {
     private DashboardPage dashboardPage;
     private LoginPage loginPage;
 
-    // TODO: Replace with valid test credentials
-    private final String VALID_EMAIL = "test@example.com";
-    private final String VALID_PASSWORD = "Password123!";
+    private final String VALID_EMAIL = "garv.patel.growlity@gmail.com";
+    private final String VALID_PASSWORD = "GnjA3UqKTN";
 
     @BeforeMethod
     public void setupPage() {

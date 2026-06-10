@@ -12,12 +12,14 @@ public class DashboardPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    // Placeholders for dashboard locators - to be updated once DOM is available
-    private By dashboardHeader = By.xpath("//h1[contains(text(), 'Dashboard') or contains(text(), 'Overview')]");
-    private By userProfileIcon = By.cssSelector(".profile-icon, [aria-label='Profile']");
-    private By sidebarNav = By.tagName("nav");
-    private By widgetContainer = By.cssSelector(".widget, .card");
-    private By logoutButton = By.xpath("//button[contains(text(), 'Logout')]");
+    // Locators based on Playwright codegen
+    private By dashboardHeader = By.xpath("//a[contains(., 'Dashboard') or contains(text(), 'Dashboard')]");
+    private By userProfileIcon = By.xpath("//button[contains(., 'GP Garv Patel') or contains(., 'Garv')]");
+    private By sidebarNav = By.xpath("//nav[@aria-label='Main navigation' or .//a[contains(., 'Dashboard')]]");
+    private By widgetContainer = By.cssSelector(".recharts-layer"); // from codegen chart interaction
+    private By logoutButton = By.xpath("//*[contains(text(), 'Sign Out')]");
+    private By measureLink = By.xpath("//a[contains(., 'Measure')]");
+    private By reportsLink = By.xpath("//a[contains(., 'Reports')]");
 
     public DashboardPage(WebDriver driver) {
         this.driver = driver;

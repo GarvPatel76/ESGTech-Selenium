@@ -10,9 +10,8 @@ public class LoginTest extends BaseTest {
 
     private LoginPage loginPage;
 
-    // TODO: Replace with valid test credentials provided by the user
-    private final String VALID_EMAIL = "test@example.com";
-    private final String VALID_PASSWORD = "Password123!";
+    private final String VALID_EMAIL = "garv.patel.growlity@gmail.com";
+    private final String VALID_PASSWORD = "GnjA3UqKTN";
 
     @BeforeMethod
     public void setupPage() {
