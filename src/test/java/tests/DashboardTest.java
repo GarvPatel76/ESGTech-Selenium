@@ -35,8 +35,14 @@ public class DashboardTest extends BaseTest {
 
     @Test(priority = 2, description = "Test Charts/Graphs Render Correctly")
     public void testChartsRender() {
-        // Look for canvas, svg, or recharts elements
-        List<WebElement> charts = getDriver().findElements(By.xpath("//canvas | //svg | //*[contains(@class, 'recharts-layer')] | //*[contains(@class, 'recharts-wrapper')] | //*[contains(@class, 'chart')]"));
+        // Data fetching can take time, wait for the chart filters (comboboxes) to appear
+        org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(getDriver(), java.time.Duration.ofSeconds(15));
+        try {
+            wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@role='combobox']")));
+        } catch (Exception e) {}
+
+        // Look for canvas, svg, recharts elements or comboboxes used for filtering charts
+        List<WebElement> charts = getDriver().findElements(By.xpath("//canvas | //svg | //*[contains(@class, 'recharts-layer')] | //*[contains(@class, 'recharts-wrapper')] | //*[@role='combobox']"));
         Assert.assertFalse(charts.isEmpty(), "At least one chart/graph should render on the dashboard");
         
         boolean anyDisplayed = false;

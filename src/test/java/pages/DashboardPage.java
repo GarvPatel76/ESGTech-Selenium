@@ -14,10 +14,10 @@ public class DashboardPage {
 
     // Locators based on Playwright codegen
     private By dashboardHeader = By.xpath("//*[contains(text(), 'Dashboard') or contains(@aria-label, 'Dashboard')]");
-    private By userProfileIcon = By.xpath("//*[contains(text(), 'Garv') or contains(., 'Garv') or contains(@class, 'avatar') or contains(@class, 'profile') or .//img]");
+    private By userProfileIcon = By.xpath("//button[contains(., 'Garv') or contains(., 'GVN')]");
     private By sidebarNav = By.xpath("//nav | //aside");
     private By widgetContainer = By.cssSelector(".recharts-layer"); // from codegen chart interaction
-    private By logoutButton = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'sign out') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'log out')]");
+    private By logoutButton = By.xpath("//*[@role='menuitem' and contains(., 'Sign Out')]");
     private By reportsLink = By.xpath("//a[contains(., 'Reports')]");
 
     public DashboardPage(WebDriver driver) {
