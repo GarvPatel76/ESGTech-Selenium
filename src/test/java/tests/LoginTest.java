@@ -19,11 +19,10 @@ public class LoginTest extends BaseTest {
         // BaseTest already navigates to https://esgtech.vercel.app/ which redirects to /login
     }
 
-    @Test(priority = 1, description = "Test Valid Login")
-    public void testValidLogin() {
-        loginPage.login(VALID_EMAIL, VALID_PASSWORD);
-        // Wait for redirect to dashboard
-        // Assert.assertTrue(getDriver().getCurrentUrl().contains("dashboard"), "Dashboard should load");
+    @Test(priority = 1, description = "Test Login (Data Driven)", dataProvider = "loginData", dataProviderClass = utils.DataProviderUtils.class)
+    public void testValidLogin(String email, String password) {
+        loginPage.login(email, password);
+        // Wait for redirect or error
     }
 
     @Test(priority = 2, description = "Test Invalid Email")
