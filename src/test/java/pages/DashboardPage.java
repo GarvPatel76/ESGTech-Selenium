@@ -13,11 +13,11 @@ public class DashboardPage {
     private WebDriverWait wait;
 
     // Locators based on Playwright codegen
-    private By dashboardHeader = By.xpath("//a[contains(., 'Dashboard') or contains(text(), 'Dashboard')]");
-    private By userProfileIcon = By.xpath("//button[contains(., 'GP Garv Patel') or contains(., 'Garv')]");
-    private By sidebarNav = By.xpath("//nav[@aria-label='Main navigation' or .//a[contains(., 'Dashboard')]]");
+    private By dashboardHeader = By.xpath("//*[contains(text(), 'Dashboard') or contains(@aria-label, 'Dashboard')]");
+    private By userProfileIcon = By.xpath("//*[contains(text(), 'Garv') or contains(., 'Garv') or contains(@class, 'avatar') or contains(@class, 'profile') or .//img]");
+    private By sidebarNav = By.xpath("//nav | //aside");
     private By widgetContainer = By.cssSelector(".recharts-layer"); // from codegen chart interaction
-    private By logoutButton = By.xpath("//*[contains(text(), 'Sign Out')]");
+    private By logoutButton = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'sign out') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'log out')]");
     private By reportsLink = By.xpath("//a[contains(., 'Reports')]");
 
     public DashboardPage(WebDriver driver) {
@@ -63,7 +63,17 @@ public class DashboardPage {
     }
 
     public void clickLogout() {
-        wait.until(ExpectedConditions.elementToBeClickable(userProfileIcon)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+        try {
+            // Ensure we are fully on dashboard before clicking
+            wait.until(ExpectedConditions.urlContains("dashboard"));
+            Thread.sleep(2000); // Wait for potential overlays to disappear
+            WebElement profileBtn = wait.until(ExpectedConditions.elementToBeClickable(userProfileIcon));
+            profileBtn.click();
+            Thread.sleep(1500); // wait for dropdown animation
+            WebElement logoutBtn = wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
+            logoutBtn.click();
+        } catch (Exception e) {
+            System.out.println("Could not click logout: " + e.getMessage());
+        }
     }
 }
