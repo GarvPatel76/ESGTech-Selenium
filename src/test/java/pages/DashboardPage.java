@@ -27,7 +27,8 @@ public class DashboardPage {
 
     public boolean isDashboardLoaded() {
         try {
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(dashboardHeader)).isDisplayed();
+            // Use userProfileIcon instead of dashboardHeader because the word "Dashboard" is also present on the login page
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(userProfileIcon)).isDisplayed();
         } catch (Exception e) {
             return false;
         }

@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 4, description = "Test Both Invalid Email and Password")
     public void testBothInvalid() {
-        loginPage.login("wrong@test.com", "wrongpassword");
+        loginPage.login("invalid_email@test.com", "wrongpassword");
         Assert.assertFalse(loginPage.getErrorMessage().isEmpty(), "Error message should be displayed for invalid credentials");
     }
 

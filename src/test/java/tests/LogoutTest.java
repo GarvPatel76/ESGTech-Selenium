@@ -33,6 +33,9 @@ public class LogoutTest extends BaseTest {
         dashboardPage.clickLogout();
         // Attempt to go back
         getDriver().navigate().back();
+        // Wait for the frontend router to kick in and redirect back to login
+        try { Thread.sleep(3000); } catch (Exception e) {}
+        
         // Since session is terminated, it should still redirect to login or not allow access
         Assert.assertFalse(dashboardPage.isDashboardLoaded(), "Dashboard should not load after logging out and clicking back");
     }
