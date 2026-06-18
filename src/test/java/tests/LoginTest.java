@@ -36,13 +36,13 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 3, description = "Test Invalid Password")
     public void testInvalidPassword() {
-        loginPage.login(VALID_EMAIL, "wrongpassword");
+        loginPage.login(VALID_EMAIL, "invalid_password");
         Assert.assertFalse(loginPage.getErrorMessage().isEmpty(), "Error message should be displayed for invalid password");
     }
 
     @Test(priority = 4, description = "Test Both Invalid Email and Password")
     public void testBothInvalid() {
-        loginPage.login("invalid_email@test.com", "wrongpassword");
+        loginPage.login("invalid_email@test.com", "invalid_password");
         Assert.assertFalse(loginPage.getErrorMessage().isEmpty(), "Error message should be displayed for invalid credentials");
     }
 
