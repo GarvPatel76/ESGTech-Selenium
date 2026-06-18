@@ -38,11 +38,11 @@ public class DashboardTest extends BaseTest {
         // Data fetching can take time, wait for the chart filters (comboboxes) to appear
         org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(getDriver(), java.time.Duration.ofSeconds(15));
         try {
-            wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@role='combobox']")));
+            wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(By.xpath("//canvas | //svg[not(ancestor::button) and not(ancestor::a)] | //*[contains(@class, 'recharts-layer')] | //*[contains(@class, 'recharts-wrapper')] | //*[contains(@class, 'chart')]")));
         } catch (Exception e) {}
 
         // Look for canvas, svg, recharts elements or comboboxes used for filtering charts
-        List<WebElement> charts = getDriver().findElements(By.xpath("//canvas | //svg | //*[contains(@class, 'recharts-layer')] | //*[contains(@class, 'recharts-wrapper')] | //*[@role='combobox']"));
+        List<WebElement> charts = getDriver().findElements(By.xpath("//canvas | //svg[not(ancestor::button) and not(ancestor::a)] | //*[contains(@class, 'recharts-layer')] | //*[contains(@class, 'recharts-wrapper')] | //*[contains(@class, 'chart')]"));
         Assert.assertFalse(charts.isEmpty(), "At least one chart/graph should render on the dashboard");
         
         boolean anyDisplayed = false;

@@ -32,7 +32,7 @@ public class ProfilePage {
     public void updateProfileName(String newName) {
         try {
             WebElement nameField = wait.until(ExpectedConditions.visibilityOfElementLocated(nameInput));
-            nameField.clear();
+            nameField.sendKeys(org.openqa.selenium.Keys.chord(org.openqa.selenium.Keys.CONTROL, "a", org.openqa.selenium.Keys.DELETE));
             nameField.sendKeys(newName);
             wait.until(ExpectedConditions.elementToBeClickable(saveBtn)).click();
         } catch (Exception e) {
