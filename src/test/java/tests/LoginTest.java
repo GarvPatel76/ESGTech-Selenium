@@ -5,6 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 
 public class LoginTest extends BaseTest {
 
@@ -77,6 +80,8 @@ public class LoginTest extends BaseTest {
     @Test(priority = 10, description = "Test Forgot Password Link")
     public void testForgotPasswordLink() {
         loginPage.clickForgotPassword();
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("reset-password"));
         Assert.assertTrue(getDriver().getCurrentUrl().contains("reset-password"), "Should navigate to reset password page");
     }
 
