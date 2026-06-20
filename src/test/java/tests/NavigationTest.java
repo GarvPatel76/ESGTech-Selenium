@@ -39,8 +39,9 @@ public class NavigationTest extends BaseTest {
         // For demonstration, we check if the sidebar is present and attempt to click a menu item if available
         Assert.assertTrue(dashboardPage.isSidebarVisible(), "Sidebar should be visible");
         
-        List<WebElement> menuItems = getDriver().findElements(By.cssSelector("aside nav a"));
-        if (!menuItems.isEmpty() && menuItems.size() > 1) {
+        List<WebElement> menuItems = getDriver().findElements(By.xpath("//aside//a | //nav//a | //*[@role='menuitem']"));
+        Assert.assertFalse(menuItems.isEmpty(), "No menu items found to test");
+        if (menuItems.size() > 1) {
             String href = menuItems.get(1).getAttribute("href");
             // Use JS click to avoid ElementClickInterceptedException if obscured
             ((org.openqa.selenium.JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", menuItems.get(1));
@@ -59,9 +60,9 @@ public class NavigationTest extends BaseTest {
         String dashboardUrl = getDriver().getCurrentUrl();
         
         // Navigate to another page via menu if possible, else just get a different URL directly to test back/forward
-        List<WebElement> menuItems = getDriver().findElements(By.cssSelector("aside nav a"));
+        List<WebElement> menuItems = getDriver().findElements(By.xpath("//aside//a | //nav//a | //*[@role='menuitem']"));
         if (!menuItems.isEmpty() && menuItems.size() > 1) {
-            menuItems.get(1).click();
+            ((org.openqa.selenium.JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", menuItems.get(1));
             try { Thread.sleep(2000); } catch (Exception e) {}
             
             getDriver().navigate().back();
